@@ -1,0 +1,144 @@
+{
+  // One debug configuration per training step. Pick one in the Run and Debug panel (Ctrl+Shift+D)
+  // and press F5. Set breakpoints inside rag/*.py to step through the pipeline live.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Step 00 - Check setup",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_00_check_setup.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 01 - Load documents",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_01_load.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 02 - Chunk (prompts for size/overlap)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_02_chunk.py",
+      "args": ["${input:chunkSize}", "${input:chunkOverlap}"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 03 - Embeddings",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_03_embed.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 04 - Build index",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_04_index.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 05 - Search (prompts for question)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_05_search.py",
+      "args": ["${input:question}"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 06 - Answer with --show-prompt (prompts for question)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_06_answer.py",
+      "args": ["${input:question}", "--show-prompt"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Step 07 - Chat",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/steps/step_07_chat.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Evaluate",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/evaluation/evaluate.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Streamlit UI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "app.py"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    },
+    {
+      "name": "Evaluate (retrieval only)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/evaluation/evaluate.py",
+      "args": ["--retrieval-only"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true
+    }
+  ],
+  "inputs": [
+    {
+      "id": "chunkSize",
+      "type": "pickString",
+      "description": "Chunk size (characters)",
+      "options": ["300", "800", "2000"],
+      "default": "800"
+    },
+    {
+      "id": "chunkOverlap",
+      "type": "pickString",
+      "description": "Chunk overlap (characters)",
+      "options": ["0", "120", "200"],
+      "default": "120"
+    },
+    {
+      "id": "question",
+      "type": "promptString",
+      "description": "Question to ask the knowledge base",
+      "default": "How long is paternity leave?"
+    }
+  ]
+}

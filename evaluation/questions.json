@@ -1,0 +1,72 @@
+[
+  {
+    "id": "support-p1-response",
+    "question": "How quickly must we send a first response for a P1 ticket?",
+    "answerable": true,
+    "expected_source": "customer_support_playbook.md",
+    "must_contain": ["15 minutes"]
+  },
+  {
+    "id": "support-refund-approval",
+    "question": "Who has to approve a refund of USD 500?",
+    "answerable": true,
+    "expected_source": "customer_support_playbook.md",
+    "must_contain": ["Support Director"]
+  },
+  {
+    "id": "hr-carry-over",
+    "question": "How many unused annual leave days can I carry over into next year?",
+    "answerable": true,
+    "expected_source": "hr_leave_policy.md",
+    "must_contain": ["10"]
+  },
+  {
+    "id": "hr-doctor-note",
+    "question": "When do I need a doctor's note for being sick?",
+    "answerable": true,
+    "expected_source": "hr_leave_policy.md",
+    "must_contain": ["certificate", "2"]
+  },
+  {
+    "id": "odoo-scheduler-time",
+    "question": "At what time does the Odoo replenishment scheduler run?",
+    "answerable": true,
+    "expected_source": "odoo_inventory_guide.md",
+    "must_contain": ["02:00"]
+  },
+  {
+    "id": "odoo-perishables",
+    "question": "Which removal strategy do we use for perishable food products?",
+    "answerable": true,
+    "expected_source": "odoo_inventory_guide.md",
+    "must_contain": ["FEFO"]
+  },
+  {
+    "id": "adr-chroma-latency",
+    "question": "What p95 latency did ChromaDB reach in the vector database benchmark?",
+    "answerable": true,
+    "expected_source": "adr_007_vector_database.md",
+    "must_contain": ["38"]
+  },
+  {
+    "id": "adr-revisit",
+    "question": "When will the team revisit the decision to use ChromaDB?",
+    "answerable": true,
+    "expected_source": "adr_007_vector_database.md",
+    "must_contain": ["million"]
+  },
+  {
+    "id": "unanswerable-wifi",
+    "question": "What is the office Wi-Fi password?",
+    "answerable": false,
+    "expected_source": null,
+    "must_contain": []
+  },
+  {
+    "id": "unanswerable-world-cup",
+    "question": "Who won the 2022 FIFA World Cup?",
+    "answerable": false,
+    "expected_source": null,
+    "must_contain": []
+  }
+]

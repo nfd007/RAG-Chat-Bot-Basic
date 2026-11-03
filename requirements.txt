@@ -1,0 +1,15 @@
+# Pinned so every attendee gets an identical, reproducible environment.
+# No LangChain / LlamaIndex on purpose: the RAG logic lives in rag/ where you can read it.
+
+ollama==0.5.1          # Python client for the local Ollama server (embeddings + chat)
+chromadb==1.0.12       # Embedded vector database (PersistentClient, stores to ./chroma_db)
+python-dotenv==1.1.0   # Reads .env into environment variables
+pypdf==5.6.0           # PDF text extraction
+python-docx==1.1.2     # .docx text extraction
+
+# Transitive pin: chromadb 1.0.12 calls posthog's pre-6.0 API. Newer posthog prints
+# "Failed to send telemetry event" on every call (telemetry is disabled anyway).
+posthog==5.4.0
+
+# Frontend (app.py). Backend steps do not need it.
+streamlit==1.45.1

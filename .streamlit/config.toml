@@ -1,0 +1,8 @@
+# Keep the UI fully local: no usage statistics sent to Streamlit.
+[browser]
+gatherUsageStats = false
+
+# Headless skips Streamlit's first-run "enter your email" prompt, which would block the
+# terminal. The trade-off: the browser does not open automatically - open the printed URL.
+[server]
+headless = true

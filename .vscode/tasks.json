@@ -1,0 +1,69 @@
+{
+  // Terminal > Run Task... Each task uses the project venv directly, so it works
+  // even if the venv is not activated in your terminal.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: create venv",
+      "type": "shell",
+      "command": "python -m venv .venv",
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup: install requirements",
+      "type": "shell",
+      "command": ".venv/bin/python -m pip install -r requirements.txt",
+      "windows": { "command": ".venv\\Scripts\\python.exe -m pip install -r requirements.txt" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup: pull Ollama models",
+      "type": "shell",
+      "command": "ollama pull nomic-embed-text; ollama pull llama3.2:3b",
+      "problemMatcher": []
+    },
+    {
+      "label": "Step 00: check setup",
+      "type": "shell",
+      "command": ".venv/bin/python steps/step_00_check_setup.py",
+      "windows": { "command": ".venv\\Scripts\\python.exe steps/step_00_check_setup.py" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Step 04: build index",
+      "type": "shell",
+      "command": ".venv/bin/python steps/step_04_index.py",
+      "windows": { "command": ".venv\\Scripts\\python.exe steps/step_04_index.py" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Step 07: chat",
+      "type": "shell",
+      "command": ".venv/bin/python steps/step_07_chat.py",
+      "windows": { "command": ".venv\\Scripts\\python.exe steps/step_07_chat.py" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: Streamlit UI",
+      "type": "shell",
+      "command": ".venv/bin/python -m streamlit run app.py",
+      "windows": { "command": ".venv\\Scripts\\python.exe -m streamlit run app.py" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Evaluate",
+      "type": "shell",
+      "command": ".venv/bin/python evaluation/evaluate.py",
+      "windows": { "command": ".venv\\Scripts\\python.exe evaluation/evaluate.py" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Evaluate: retrieval only",
+      "type": "shell",
+      "command": ".venv/bin/python evaluation/evaluate.py --retrieval-only",
+      "windows": { "command": ".venv\\Scripts\\python.exe evaluation/evaluate.py --retrieval-only" },
+      "problemMatcher": []
+    }
+  ]
+}
